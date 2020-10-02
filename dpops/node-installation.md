@@ -16,7 +16,7 @@ This guide will walk you through installing, registering, and preparing a delega
 
 This guide is split into two sections:
 
-* [**Quick installation**](node-installation.md#quick-installation): With a simple auto-installer script, you will be able to install the **`xcash-dpops`** program that will enable you to relay and forge blocks, and participate in the security of the network.  _Linux knowledge is not mandatory to follow the auto-installer script._ 
+* [**Quick installation**](node-installation.md#quick-installation): With a simple auto-installer script, you will be able to install the **`xcash-dpops`** program that will enable you to relay and forge blocks, and participate in the security of the network.  _Linux knowledge is not mandatory to follow the auto-installer script._
 * [**Manual** ](node-installation.md#manual-installation)\*\*\*\*[**installation**](node-installation.md#manual-installation)**:** This step-by-step guide will cover everything about building the **`xcash-dpops`** program, the dependencies from the source code, and managing the services. _It is expected that you are comfortable with Linux to follow this guide._
 
 ## Requirements
@@ -116,7 +116,7 @@ This will open the following settings screen to choose from:
 
 You can select the task by inputting the corresponding number:
 
-1. **Install:** This setting will prepare the necessary directories, download the dependencies, build, and install the **`xcash-dpops`** program. The steps to follow are stated down below. 
+1. **Install:** This setting will prepare the necessary directories, download the dependencies, build, and install the **`xcash-dpops`** program. The steps to follow are stated down below.
 2. **Update:** Updates all the packages and releases of the dependencies to build the program.
 3. **Uninstall:** Removes all the files, dependencies and related program of the **`xcash-dpops`**.
 4. **Install / Update Blockchain:** Downloads or updates the X-Cash blockchain data.
@@ -300,6 +300,7 @@ Copy the link address of the tgz file of the latest version available \(disregar
 
 ```bash
 cd ~/xcash-official && wget http://downloads.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1804-v4.4-latest.tgz
+cd ~/xcash-official && wget http://downloads.mongodb.org/linux/{{ software_versions.MONGODB.filename }}.tgz
 ```
 
 Then, extract it and remove the downloaded file:
@@ -311,10 +312,10 @@ tar -xf mongodb-linux-x86_64*.tgz && rm mongodb-linux-x86_64*.tgz
 Lastly, add the MongoDB binaries folder to your path with the following command.
 
 ```bash
-echo -e '\nexport PATH=$USER/xcash-official/mongodb-linux-x86_64-ubuntu1804-4.4.0-rc7-36-gcf4ac31/bin:$PATH' >> ~/.profile && source ~/.profile
+echo -e '\nexport PATH=$USER/xcash-official/{{ software_versions.MONGODB.filename }}/bin:$PATH' >> ~/.profile && source ~/.profile
 ```
 
-Replace `$USER/xcash-official/mongodb-linux-x86_64-ubuntu1804-4.4.0-rc7-36-gcf4ac31/bin` with the MongoDB binaries folder in your system.
+Replace `$USER/xcash-official/{{ software_versions.MONGODB.filename }}/bin` with the MongoDB binaries folder in your system.
 
 Additionally, create the `/data/db` folder that will keep the delegates databases:
 
@@ -329,6 +330,8 @@ Go to the [official GitHub repository](https://github.com/mongodb/mongo-c-driver
 
 ```bash
 cd ~/xcash-official/ && wget https://github.com/mongodb/mongo-c-driver/releases/download/1.16.2/mongo-c-driver-1.16.2.tar.gz
+cd ~/xcash-official/ && wget https://github.com/mongodb/mongo-c-driver/releases/download/{{ software_versions.MONGOC_DRIVER.version }}/{{ software_versions.MONGOC_DRIVER.filename }}.tar.gz
+
 ```
 
 Now, build the driver using the following commands \(based on these [instructions](http://mongoc.org/libmongoc/current/installing.html#building-from-a-release-tarball)\):
@@ -461,10 +464,10 @@ WantedBy=multi-user.target
 In the file, replace the following if needed:
 
 * **`User`**: User of the system \(most likely `root`\)
-* **`PIDFile`**: The path to `mongod.pid` file that  you created at the initialization step. 
-* **`ExecStart`**: 
+* **`PIDFile`**: The path to `mongod.pid` file that  you created at the initialization step.
+* **`ExecStart`**:
   * Replace the path to the `mongod` file.
-  * Replace the path to the database directory \(`/data/db` as per the instructions\) 
+  * Replace the path to the database directory \(`/data/db` as per the instructions\)
 
 #### 3. xcash-daemon Service
 
@@ -497,9 +500,9 @@ WantedBy=multi-user.target
 In the file, replace the following if needed:
 
 * **`User`**: User of the system \(most likely `root`\)
-* **`PIDFile`**: The path to `xcash-daemon.pid` file that you created at the initialization step. 
-* **`ExecStart`**: 
-  * Replace the path to the `xcashd` file. 
+* **`PIDFile`**: The path to `xcash-daemon.pid` file that you created at the initialization step.
+* **`ExecStart`**:
+  * Replace the path to the `xcashd` file.
   * Replace the path to the `xcash-daemon_Log.txt` file.
   * Replace the path to the `xcash-daemon.pid` file.
 
@@ -532,7 +535,7 @@ WantedBy=multi-user.target
 In the file, replace the following if needed:
 
 * **`User`**: User of the system \(most likely `root`\)
-* **`ExecStart`**: 
+* **`ExecStart`**:
   * Replace the path to the **`xcash-wallet-rpc`** file.
   * Replace the path to the **`xcash-wallets`** folder, and replace **`WALLET`** by your delegate wallet name.
   * Replace **`PASSWORD`** with your delegate wallet password.
@@ -600,7 +603,7 @@ In the file, replace the following if needed:
 
 * **`User`**: User of the system \(most likely `root`\)
 * **`WorkingDirectory`**: Replace the path of the `xcash-dpops/build` folder.
-* **`ExecStart`**: 
+* **`ExecStart`**:
   * Replace the path to the **`xcash-dpops`** file.
   * Replace `BLOCK_VERIFIER_SECRET_KEY`  with your generated verifier secret key. **This should be the first parameter.**
 
@@ -690,4 +693,3 @@ cd build && ./xcash-dpops --test
 The test will return the number of passed and failed tests at the bottom of the console. The failed test need to be 0 before you run the node. If the output is not showing 0 for a failed test, then you need to scroll through the testing output and find what test failed \(It will be red instead of green\).
 
 If this is a system compatibility test, then you will need to fix the system. If this is a core test that has failed, then you need to possibly rebuild, or [contact us on the DPoPS testing section](https://xcashteam.atlassian.net/servicedesk) or go the [Discord channel](https://discord.gg/wXFGERr) to get help from testers and the dev-team.
-

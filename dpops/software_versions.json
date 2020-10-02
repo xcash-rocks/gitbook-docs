@@ -1,0 +1,16 @@
+{
+    "variables": {
+        "NODEJS": {
+          "version": "v14.10.1",
+          "filename": "node-v14.10.1-linux-x64"
+        },
+        "MONGODB": {
+          "version": "4.4.1",
+          "filename": "mongodb-linux-x86_64-ubuntu1804-4.4.1"
+        },
+        "MONGOC_DRIVER": {
+          "version": "1.17.0",
+          "filename": "mongo-c-driver-1.17.0"
+        }
+    }
+}

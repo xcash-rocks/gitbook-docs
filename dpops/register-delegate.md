@@ -45,9 +45,9 @@ delegate_register <delegate_name> <IP_address|domain_name> <block_verifier_publi
 
 And replace the information with:
 
-* **`<delegate_name>`**: the name that will be displayed on the delegate explorer. _Cannot be updated._
+* **`<delegate_name>`**: the name that will be displayed on the delegate explorer \(minimum 5 characters long\).  _Cannot be updated._
 * **`<IP_address|domain_name>`** : your server's IP address or its domain name \(if you have bought a domain name and correctly set up the DNS record\). It is possible to change this information at a later time. _Can be updated._
-* **`<block_verifier_public_key>`** : the block verifier public key that you have generated [earlier](register-delegate.md#1-generate-a-block-verifier-key). _Cannot be updated._ 
+* **`<block_verifier_public_key>`** : the block verifier public key that you have generated [earlier](register-delegate.md#1-generate-a-block-verifier-key). _Cannot be updated._
 
 **Example:**
 
@@ -236,7 +236,7 @@ To run your node as a shared delegate, you just need to run the **`xcash-dpops`*
 
 With :
 
-* **`<fee>` :** Your delegate fee is the amount of the block reward you are keeping to yourself. The **`<fee>`** is expressed in percentage \(%\) and can take up to 6 decimals. 
+* **`<fee>` :** Your delegate fee is the amount of the block reward you are keeping to yourself. The **`<fee>`** is expressed in percentage \(%\) and can take up to 6 decimals.
 * **`<amount>` :** The minimum amount of XCASH that can be sent to voters as part of their payment. Has to be an integer number.
 
 _**Example**_
@@ -371,4 +371,3 @@ cp -a dist/* ~/xcash-official/xcash-dpops/delegates-pool-website
 
 **And you are done** 🎉  
 Verify that you are listed in the [delegate explorer](http://delegates.xcash.foundation/), and start advertising your node to get people joining your cause and vote for you!
-
