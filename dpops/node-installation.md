@@ -300,7 +300,7 @@ Copy the link address of the tgz file of the latest version available \(disregar
 
 ```bash
 cd ~/xcash-official && wget http://downloads.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1804-v4.4-latest.tgz
-cd ~/xcash-official && wget http://downloads.mongodb.org/linux/{{ software_versions.MONGODB.filename }}.tgz
+cd ~/xcash-official && wget http://downloads.mongodb.org/linux/{{ book.MONGODB.filename }}.tgz
 ```
 
 Then, extract it and remove the downloaded file:
@@ -312,10 +312,10 @@ tar -xf mongodb-linux-x86_64*.tgz && rm mongodb-linux-x86_64*.tgz
 Lastly, add the MongoDB binaries folder to your path with the following command.
 
 ```bash
-echo -e '\nexport PATH=$USER/xcash-official/{{ software_versions.MONGODB.filename }}/bin:$PATH' >> ~/.profile && source ~/.profile
+echo -e '\nexport PATH=$USER/xcash-official/{{ book.MONGODB.filename }}/bin:$PATH' >> ~/.profile && source ~/.profile
 ```
 
-Replace `$USER/xcash-official/{{ software_versions.MONGODB.filename }}/bin` with the MongoDB binaries folder in your system.
+Replace `$USER/xcash-official/{{ book.MONGODB.filename }}/bin` with the MongoDB binaries folder in your system.
 
 Additionally, create the `/data/db` folder that will keep the delegates databases:
 
@@ -330,7 +330,7 @@ Go to the [official GitHub repository](https://github.com/mongodb/mongo-c-driver
 
 ```bash
 cd ~/xcash-official/ && wget https://github.com/mongodb/mongo-c-driver/releases/download/1.16.2/mongo-c-driver-1.16.2.tar.gz
-cd ~/xcash-official/ && wget https://github.com/mongodb/mongo-c-driver/releases/download/{{ software_versions.MONGOC_DRIVER.version }}/{{ software_versions.MONGOC_DRIVER.filename }}.tar.gz
+cd ~/xcash-official/ && wget https://github.com/mongodb/mongo-c-driver/releases/download/{{ book.MONGOC_DRIVER.version }}/{{ book.MONGOC_DRIVER.filename }}.tar.gz
 
 ```
 
