@@ -299,8 +299,7 @@ Then click on **All version binaries**.
 Copy the link address of the tgz file of the latest version available \(disregarding debug symbols version\) and use it to download the installation folder using this command \(replacing the link with the most recent version\).
 
 ```bash
-cd ~/xcash-official && wget http://downloads.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1804-v4.4-latest.tgz
-cd ~/xcash-official && wget http://downloads.mongodb.org/linux/{{ book.mongodb.filename }}.tgz
+cd ~/xcash-official && wget http://downloads.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1804-4.4.1.tgz
 ```
 
 Then, extract it and remove the downloaded file:
@@ -312,10 +311,10 @@ tar -xf mongodb-linux-x86_64*.tgz && rm mongodb-linux-x86_64*.tgz
 Lastly, add the MongoDB binaries folder to your path with the following command.
 
 ```bash
-echo -e '\nexport PATH=$USER/xcash-official/{{ book.mongodb.filename }}/bin:$PATH' >> ~/.profile && source ~/.profile
+echo -e '\nexport PATH=$USER/xcash-official/mongodb-linux-x86_64-ubuntu1804-4.4.1/bin:$PATH' >> ~/.profile && source ~/.profile
 ```
 
-Replace `$USER/xcash-official/{{ book.mongodb.filename }}/bin` with the MongoDB binaries folder in your system.
+Replace `$USER/xcash-official/"mongodb-linux-x86_64-ubuntu1804-4.4.1/bin` with the MongoDB binaries folder in your system.
 
 Additionally, create the `/data/db` folder that will keep the delegates databases:
 
@@ -329,10 +328,8 @@ First, download the latest stable version of the MongoDB C Driver.
 Go to the [official GitHub repository](https://github.com/mongodb/mongo-c-driver/) and download the latest stable[ release](https://github.com/mongodb/mongo-c-driver/tags). Get the tarball file in your installation folder:
 
 ```bash
-cd ~/xcash-official/ && wget https://github.com/mongodb/mongo-c-driver/releases/download/1.16.2/mongo-c-driver-1.16.2.tar.gz
-cd ~/xcash-official/ && wget https://github.com/mongodb/mongo-c-driver/releases/download/{{ book.mongoc_driver.version }}/{{ book.mongoc_driver.filename }}.tar.gz
+cd ~/xcash-official/ && wget https://github.com/mongodb/mongo-c-driver/releases/download/1.17.0/mongo-c-driver-1.17.0.tar.gz
 ```
-Test: {{ book.mongoc_driver.version }}
 
 
 Now, build the driver using the following commands \(based on these [instructions](http://mongoc.org/libmongoc/current/installing.html#building-from-a-release-tarball)\):
