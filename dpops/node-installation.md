@@ -331,6 +331,7 @@ Go to the [official GitHub repository](https://github.com/mongodb/mongo-c-driver
 ```bash
 cd ~/xcash-official/ && wget https://github.com/mongodb/mongo-c-driver/releases/download/1.16.2/mongo-c-driver-1.16.2.tar.gz
 cd ~/xcash-official/ && wget https://github.com/mongodb/mongo-c-driver/releases/download/{{ book.mongoc_driver.version }}/{{ book.mongoc_driver.filename }}.tar.gz
+{{ book.mongoc_driver }}
 
 ```
 
